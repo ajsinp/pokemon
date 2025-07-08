@@ -1,3 +1,14 @@
+const generateStaticParams = async () => {
+  const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=20");
+  const data = await res.json();
+
+  const params = data.results.map((_, index) => ({
+    id: (index + 1).toString(),
+  }));
+
+  return params;
+};
+
 const PokemonDetail = async ({ params }) => {
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`);
   const pokemon = await res.json();
@@ -9,7 +20,7 @@ const PokemonDetail = async ({ params }) => {
         <img
           src={pokemon.sprites.front_default}
           alt={pokemon.name}
-          className="mb-4 h-30 w-50 object-contain mx-auto"
+          className="mb-4 h-32 w-32 object-contain mx-auto"
         />
         <p>
           <strong>Height:</strong> {pokemon.height}
@@ -29,4 +40,5 @@ const PokemonDetail = async ({ params }) => {
   );
 };
 
+export { generateStaticParams };
 export default PokemonDetail;

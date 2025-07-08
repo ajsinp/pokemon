@@ -2,8 +2,8 @@ import './globals.css';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Next.js Pokémon App',
-  description: 'Search and explore Pokémon using PokeAPI',
+  title: 'Pokemon App',
+  description: 'Search and explore Pokemon using PokeAPI',
 };
 
 export default function RootLayout({ children }) {
